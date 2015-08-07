@@ -12,6 +12,7 @@ public:
     int minute;
     string status;
 };
+map<string, map<int, Records> > per; // elegant, lol
 
 void printprice(int total) {
     cout << "$" << total/100 << "." << setw(2) << setfill('0') << total%100 << endl;
@@ -36,8 +37,6 @@ int getprice(map<int, Records>::iterator st1, map<int, Records>::iterator st2) {
     return sum;
 }
 
-map<string, map<int, Records> > per; // elegant, lol
-
 int main(void) {
     string name;
     Records rcd;
@@ -49,8 +48,7 @@ int main(void) {
         cin >> rate[i];
     cin >> N;
     for (i = 0; i < N; i++) {
-        cin >> name;
-        cin >> rcd.month >> ign >> rcd.day >> ign >> rcd.hour >> ign >> rcd.minute >> rcd.status;
+        cin >> name >> rcd.month >> ign >> rcd.day >> ign >> rcd.hour >> ign >> rcd.minute >> rcd.status;
         int time = rcd.day*24*60 + rcd.hour*60 + rcd.minute;
         per[name].insert({time, rcd});
     }
