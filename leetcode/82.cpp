@@ -3,27 +3,46 @@
 #include <algorithm>
 using namespace std;
 
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
+struct ListNode {
+     int val;
+     ListNode *next;
+     ListNode(int x) : val(x), next(NULL) {}
+ };
+
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
-        
+        ListNode *left, *right = head;
+        // tmp head
+        head = new ListNode(-1);
+        head->next = right;
+        left = head;
+        while (right != nullptr) {
+            auto next = right->next;
+            if (next != nullptr && next->val == right->val) {
+                auto val = right->val;
+                while (right != nullptr && right->val == val) {
+                    next = right->next;
+                    delete right;
+                    right = next;
+                }
+                left->next = right;
+            }
+            else {
+                left = right;
+                right = next;
+            }
+        }
+        left = head;
+        head = head->next;
+        delete left;
+        return head;
     }
 };
 
 
 int main(void) {
-    vector<vector<int>> matrix {{1,   3,  5,  7},
-                                {10, 11, 16, 20},
-                                {23, 30, 34, 50};
-    cout << Solution().searchMatrix(matrix, 3) << endl;
+    cout << Solution().deleteDuplicates(nullptr) << endl;
     // system("pause");
     return 0;
 }

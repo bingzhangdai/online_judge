@@ -14,8 +14,7 @@ public:
     ListNode* deleteDuplicates(ListNode* head) {
         if (head == nullptr)
             return head;
-        ListNode *ptr;
-        ptr = head;
+        ListNode *ptr = head;
         while (ptr->next != nullptr) {
             if (ptr->val == ptr->next->val) {
                 auto next = ptr->next;
@@ -29,7 +28,6 @@ public:
         return head;
     }
 };
-
 
 int main(void) {
     auto a = new ListNode(3);
