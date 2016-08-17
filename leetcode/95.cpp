@@ -14,7 +14,6 @@ struct TreeNode {
 class Solution {
 public:
     vector<TreeNode*> generateTrees(int n) {
-        int left = 0, right = n;
         vector<TreeNode *> res;
         if (n == 0)
             return res;
