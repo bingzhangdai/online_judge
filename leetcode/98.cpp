@@ -21,7 +21,7 @@ class Solution {
     }
 public:
     bool isValidBST(TreeNode* root) {
-        return check(root, (long)INT_MAX + 1, (long)INT_MIN - 1);
+        return check(root, LONG_MAX, LONG_MIN);
     }
 };
 
