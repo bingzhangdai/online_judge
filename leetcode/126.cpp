@@ -210,8 +210,7 @@ public:
 };
 */
 
-class Solution {
-public:
+// 勉强过了吧，有点心塞
 class Solution {
     int distance(const string& word1, const string& word2) {
         auto count = 0;
@@ -220,6 +219,31 @@ class Solution {
                 count++;
         return count;
     }
+    void dfs(vector<string>& word_list, vector<bool>& visited, const vector<vector<int>>& adj_list, vector<string>& path, vector<vector<string>>& res, int pre) {
+        if (!adj_list[pre].empty() && adj_list[pre].back() == word_list.size() - 1) {
+            path.push_back(word_list.back());
+            if (res.empty() || res[0].size() == path.size())
+                res.push_back(path);
+            else {
+                res.clear();
+                res.push_back(path);
+            }
+            path.pop_back();
+            return;
+        }
+        if (adj_list[pre].empty() || !res.empty() && res[0].size() < path.size() + 2)
+            return;
+        
+        for (auto i : adj_list[pre]) {
+            if (!visited[i]) {
+                visited[i] = true;
+                path.push_back(word_list[i]);
+                dfs(word_list, visited, adj_list, path, res, i);
+                path.pop_back();
+                visited[i] = false;
+            }
+        }
+    }
 public:
     vector<vector<string>> findLadders(string beginWord, string endWord, unordered_set<string> &wordList) {
         vector<string> word_list_vector { beginWord };
@@ -227,10 +251,8 @@ public:
             word_list_vector.push_back(*it);
         word_list_vector.push_back(endWord);
         
-        vector<bool> visited(word_list_vector.size(), false);
-        visited[0] = true;
 
-        vector<vector<int>> adj_list(word_list_vector.size(), vector<int>());
+        vector<vector<int>> adj_list(word_list_vector.size());
         for (int i = 0; i < word_list_vector.size(); i++)
             for (int j = i + 1; j < word_list_vector.size(); j++)
                 if (distance(word_list_vector[i], word_list_vector[j]) == 1) {
@@ -238,20 +260,22 @@ public:
                     adj_list[j].push_back(i);
                 }
         
-        vector<vector<int>> pre;
+        vector<vector<int>> adj_list_new(word_list_vector.size());
 
+        vector<bool> visited(word_list_vector.size(), false);
+        visited.back() = true;
         std::queue<int> bfs_queue;
-        bfs_queue.push(0);
+        bfs_queue.push(word_list_vector.size() - 1);
         unordered_set<int> bfs_next_enqueue;
         while (!bfs_queue.empty()) {
             auto ind = bfs_queue.front();
             bfs_queue.pop();
-            if (ind == word_list_vector.size() - 1)
+            if (ind == 0)
                 break;
             
             for (auto i : adj_list[ind]) {
                 if (!visited[i]) {
-                    pre[i].push_back(ind);
+                    adj_list_new[i].push_back(ind);
                     bfs_next_enqueue.insert(i);
                 }
             }
@@ -265,7 +289,13 @@ public:
             }
         }
 
+        for (int i = 1; i < visited.size(); i++)
+            visited[i] = false;
+        vector<string> path { beginWord };
         vector<vector<string>> res;
+        dfs(word_list_vector, visited, adj_list_new, path, res, 0);
+
+        return res;
     }
 };
 
