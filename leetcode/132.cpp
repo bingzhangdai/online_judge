@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <deque>
+#include <algorithm>
 using namespace std;
 
 /*
@@ -60,11 +60,11 @@ public:
 /*
 // dp will also lead to TLE, ╮(╯▽╰)╭
 class Solution {
-    bool ispalindrome(const string& s, int i, int j) {
-        while (i < j)
-            if (s[i++] != s[--j])
-                return false;
-        return true;
+    bool ispalindrome(const string& s, int i, int j, vector<vector<bool>>& dp) {
+        dp[i][j] = s[j] == s[j+i];
+        if (i - 1 != 0)
+            dp[i][j] = dp[i][j] && dp[i-2][j+1];
+        return dp[i][j];
     }
 public:
     int minCut(string s) {
@@ -72,9 +72,10 @@ public:
         if (n == 0)
             return 0;
         vector<vector<int>> dp(n, vector<int>(n, 0));
+        vector<vector<bool>> dp_palindrome(n, vector<bool>(n, true));
         for (int i = 1; i < n; i++) {
             for (int j = 0; j < n - i; j++) {
-                if (ispalindrome(s, j, i + 1 + j))
+                if (ispalindrome(s, i, j, dp_palindrome))
                     dp[i][j] = 0;
                 else {
                     int min_cut = INT_MAX;
@@ -89,15 +90,41 @@ public:
 };
 */
 
+// previous dp is O(n^3)
 class Solution {
 public:
     int minCut(string s) {
-        
+        int n = s.size();
+        if (n == 0)
+            return 0;
+        vector<vector<bool>> dp_palindrome(n, vector<bool>(n, true));
+        for (int i = 1; i < n; i++) {
+            for (int j = 0; j < n - i; j++) {
+                dp_palindrome[i][j] = s[j] == s[j+i];
+                if (i - 1 != 0)
+                    dp_palindrome[i][j] = dp_palindrome[i][j] && dp_palindrome[i-2][j+1];
+            }
+        }
+        vector<int> dp_cut(n);
+        for (int i = 0; i < n; i++) {
+            if (dp_palindrome[i][0])
+                dp_cut[i] = 0;
+            else {
+                int min_cut = dp_cut[i-1] + 1;
+                for (int j = 1; j < i; j++) {
+                    if (dp_palindrome[i-j][j])
+                        min_cut = min(min_cut, 1 + dp_cut[j-1]);
+                }
+                dp_cut[i] = min_cut;
+            }
+        }
+        return dp_cut.back();
     }
 };
 
+
 int main(void) {
-    cout << Solution().minCut("aabbc") << endl;
+    cout << Solution().minCut("cabababcbc") << endl;
     return 0;
 }
 /*
