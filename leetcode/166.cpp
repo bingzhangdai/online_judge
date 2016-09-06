@@ -1,41 +1,36 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <cstring>
+#include <unordered_map>
 using namespace std;
 
 class Solution {
-    int gcd(int m, int n) {
-        while (m % n) {
-            auto tmp = n;
-            n = m % n;
-            m = tmp;
+    string frac_tostr(long num, long den) {
+        unordered_map<long, int> hash_map;
+        string res = num ? "." : "";
+        while (num) {
+            auto p = hash_map.find(num);
+            if (p != hash_map.end()) {
+                res.insert((*p).second, 1, '(');
+                return res + ")";
+            }
+            else
+                hash_map[num] = res.size();
+            num *= 10;
+            res += to_string(num / den);
+            num %= den;
         }
-        return n;
-    }
-    string frac_tostr(int numerator, int denominator) {
-        int n = numerator;
-        string res = "";
-        do {
-            n *= 10;
-            res += itos(n / denominator);
-            n %= denominator;
-        }
-        while (n != numerator && n != 0);
-        return n ? "(" + res + ")" : res;
-    }
-    inline string itos(int num) {
-        return string(itoa(num));
+        return res;
     }
 public:
     string fractionToDecimal(int numerator, int denominator) {
-        int gcdivisor = gcd(numerator, denominator);
-        numerator /= gcdivisor;
-        denominator /= gcdivisor;
-        return itos(numerator / denominator) + (numerator % denominator ? "." + frac_tostr(numerator, denominator) : "");
+        bool sign = numerator < 0 && denominator > 0 || numerator > 0 && denominator < 0;
+        long num = abs((long)numerator), den = abs((long)denominator);
+        return (sign ? "-" : "") + to_string(num / den) + frac_tostr(num % den, den);
     }
 };
 
 int main(void) {
+    cout << Solution().fractionToDecimal(1, 9) << endl;
     return 0;
 }
