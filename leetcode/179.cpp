@@ -9,7 +9,8 @@ class Solution {
         bool operator()(const string& m, const string& n) {
             int i = 0, j = 0;
             int m_n_end = 0;
-            while (m_n_end < 2) {
+            // magic number, haha
+            while (m_n_end < 3) {
                 if (m[i] != n[j])
                     return m[i] > n[j];
                 if (++i == m.size()) {
@@ -33,6 +34,9 @@ public:
         string res = "";
         for (const auto& s : num_str)
             res += s;
+        // 太猥琐了
+        if (res[0] == '0')
+            return "0";
         return res;
     }
 };
