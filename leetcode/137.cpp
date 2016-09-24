@@ -5,7 +5,23 @@ using namespace std;
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
-        
+        vector<int> bits(32, 0);
+        for (const auto n : nums) {
+            uint32_t p = 0b1;
+            int bit_count = 0;
+            do {
+                if (n & p)
+                    bits[bit_count]++;
+                bit_count++;
+            } while (p <<= 1);
+        }
+        int res = 0, p = 0b1;
+        for (const auto b : bits) {
+            if (b % 3)
+                res |= p;
+            p <<= 1;
+        }
+        return res;
     }
 };
 
