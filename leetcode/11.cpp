@@ -14,7 +14,7 @@ public:
                 maximum = area;
             if (height[i] < height[j]) {
                 int k = i + 1;
-                while (i < height.size() && height[k] < height[i]) { i++; }
+                while (k < height.size() && height[k] < height[i]) { k++; }
                 i = k;
             }
             else {
