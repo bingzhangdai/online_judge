@@ -11,8 +11,11 @@ public:
         while (pos < nums.size()) {
             if (pos == nums.size() - 1)
                 break;
-            auto jumps = pos + nums[pos], farest = 0, i = 0;
-            for (i = pos; i < nums.size() && i <= jumps; i++) {
+            auto jumps = pos + nums[pos], farest = pos, i = 0;
+            for (i = pos; i <= jumps; i++) {
+                if (i == nums.size() - 1) {
+                    return steps + 1;
+                }
                 auto tmp = i + nums[i];
                 if (farest < tmp) {
                     farest = tmp;
