@@ -206,12 +206,12 @@
 * [ ] 659 Split Array into Consecutive Subsequences
 * [ ] 665 Non-decreasing Array
 * [ ] 667 Beautiful Arrangement II
-* [ ] 668 Kth Smallest Number in Multiplication Table
+* [x] 668 Kth Smallest Number in Multiplication Table
 * [ ] 676 Implement Magic Dictionary
 * [ ] 679 24 Game
 * [ ] 681 Next Closest Time
 * [ ] 683 K Empty Slots
-* [ ] 684 Redundant Connection
+* [x] 684 Redundant Connection
 * [ ] 685 Redundant Connection II
 * [x] 686 Repeated String Match
 * [x] 687 Longest Univalue Path
