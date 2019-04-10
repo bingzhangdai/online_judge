@@ -168,7 +168,7 @@
 * [ ] 506 Relative Ranks
 * [ ] 514 Freedom Trail
 * [ ] 520 Detect Capital
-* [ ] 521 Longest Uncommon Subsequence I
+* [x] 521 Longest Uncommon Subsequence I
 * [ ] 522 Longest Uncommon Subsequence II
 * [ ] 524 Longest Word in Dictionary through Deleting
 * [ ] 526 Beautiful Arrangement
@@ -184,14 +184,14 @@
 * [ ] 544 Output Contest Matches
 * [ ] 545 Boundary of Binary Tree
 * [ ] 549 Binary Tree Longest Consecutive Sequence II
-* [ ] 551 Student Attendance Record I
+* [x] 551 Student Attendance Record I
 * [ ] 552 Student Attendance Record II
-* [ ] 560 Subarray Sum Equals K
+* [x] 560 Subarray Sum Equals K
 * [ ] 562 Longest Line of Consecutive One in Matrix
 * [ ] 568 Maximum Vacation Days
 * [ ] 569 Median Employee Salary
-* [ ] 581 Shortest Unsorted Continuous Subarray
-* [ ] 583 Delete Operation for Two Strings
+* [x] 581 Shortest Unsorted Continuous Subarray
+* [x] 583 Delete Operation for Two Strings
 * [ ] 587 Erect the Fence
 * [ ] 604 Design Compressed String Iterator
 * [ ] 616 Add Bold Tag in String
