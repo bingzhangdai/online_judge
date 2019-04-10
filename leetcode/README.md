@@ -202,13 +202,13 @@
 * [ ] 652 Find Duplicate Subtrees
 * [ ] 656 Coin Path
 * [ ] 657 Judge Route Circle
-* [ ] 658 Find K Closest Elements
-* [ ] 659 Split Array into Consecutive Subsequences
-* [ ] 665 Non-decreasing Array
-* [ ] 667 Beautiful Arrangement II
-* [x] 668 Kth Smallest Number in Multiplication Table
-* [ ] 676 Implement Magic Dictionary
-* [ ] 679 24 Game
+* [x] 658 Find K Closest Elements
+* [x] 659 Split Array into Consecutive Subsequences
+* [x] 665 Non-decreasing Array
+* [x] 667 Beautiful Arrangement II
+* [X] 668 Kth Smallest Number in Multiplication Table
+* [x] 676 Implement Magic Dictionary
+* [x] 679 24 Game
 * [ ] 681 Next Closest Time
 * [ ] 683 K Empty Slots
 * [x] 684 Redundant Connection
