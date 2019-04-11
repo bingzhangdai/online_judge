@@ -165,34 +165,34 @@
 * [ ] 501 Find Mode in Binary Search Tree
 * [ ] 503 Next Greater Element II
 * [ ] 505 The Maze II
-* [ ] 506 Relative Ranks
+* [x] 506 Relative Ranks
 * [ ] 514 Freedom Trail
-* [ ] 520 Detect Capital
+* [x] 520 Detect Capital
 * [x] 521 Longest Uncommon Subsequence I
-* [ ] 522 Longest Uncommon Subsequence II
-* [ ] 524 Longest Word in Dictionary through Deleting
-* [ ] 526 Beautiful Arrangement
+* [x] 522 Longest Uncommon Subsequence II
+* [x] 524 Longest Word in Dictionary through Deleting
+* [x] 526 Beautiful Arrangement
 * [ ] 527 Word Abbreviation
-* [ ] 530 Minimum Absolute Difference in BST
+* [x] 530 Minimum Absolute Difference in BST
 * [ ] 531 Lonely Pixel I
 * [ ] 533 Lonely Pixel II
 * [ ] 534 Design TinyURL
 * [ ] 535 Encode and Decode TinyURL
-* [ ] 541 Reverse String II
-* [ ] 542 01 Matrix
-* [ ] 543 Diameter of Binary Tree
+* [x] 541 Reverse String II
+* [x] 542 01 Matrix
+* [x] 543 Diameter of Binary Tree
 * [ ] 544 Output Contest Matches
 * [ ] 545 Boundary of Binary Tree
 * [ ] 549 Binary Tree Longest Consecutive Sequence II
 * [x] 551 Student Attendance Record I
-* [ ] 552 Student Attendance Record II
+* [x] 552 Student Attendance Record II
 * [x] 560 Subarray Sum Equals K
 * [ ] 562 Longest Line of Consecutive One in Matrix
 * [ ] 568 Maximum Vacation Days
 * [ ] 569 Median Employee Salary
 * [x] 581 Shortest Unsorted Continuous Subarray
 * [x] 583 Delete Operation for Two Strings
-* [ ] 587 Erect the Fence
+* [x] 587 Erect the Fence
 * [ ] 604 Design Compressed String Iterator
 * [ ] 616 Add Bold Tag in String
 * [x] 638 Shopping Offers

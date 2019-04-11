@@ -26,7 +26,7 @@ public:
         res.push_back(points.front());
         for (int i = 1; i < points.size(); i++) {
             bool isAllLeft = true;
-            for (int k = 0; k < points.size(); k++) {
+            for (int k = i + 1; k < points.size(); k++) {
                 if (!isLeft(res.back(), points[i], points[k])) {
                     isAllLeft = false;
                     break;
@@ -39,7 +39,7 @@ public:
         res.push_back(points.back());
         for (int i = points.size() - 1; i >= 0; i--) {
             bool isAllLeft = true;
-            for (int k = 0; k < points.size(); k++) {
+            for (int k = i - 1; k >= 0; k--) {
                 if (!isLeft(res.back(), points[i], points[k])) {
                     isAllLeft = false;
                     break;
