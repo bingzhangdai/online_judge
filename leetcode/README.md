@@ -162,7 +162,7 @@
 * [ ] 493 Reverse Pairs
 * [ ] 494 Target Sum
 * [ ] 498 Diagonal Traverse
-* [ ] 501 Find Mode in Binary Search Tree
+* [x] 501 Find Mode in Binary Search Tree
 * [ ] 503 Next Greater Element II
 * [ ] 505 The Maze II
 * [x] 506 Relative Ranks
