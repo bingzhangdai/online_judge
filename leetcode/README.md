@@ -195,8 +195,8 @@
 * [ ] 587 Erect the Fence
 * [ ] 604 Design Compressed String Iterator
 * [ ] 616 Add Bold Tag in String
-* [ ] 638 Shopping Offers
-* [ ] 643 Maximum Average Subarray I
+* [x] 638 Shopping Offers
+* [x] 643 Maximum Average Subarray I
 * [ ] 644 Maximum Average Subarray II
 * [ ] 651 4 Keys Keyboard
 * [ ] 652 Find Duplicate Subtrees
