@@ -159,7 +159,7 @@
 * [x] 486 Predict the Winner
 * [ ] 487 Max Consecutive Ones II
 * [ ] 490 The Maze
-* [ ] 493 Reverse Pairs
+* [x] 493 Reverse Pairs
 * [x] 494 Target Sum
 * [x] 498 Diagonal Traverse
 * [x] 501 Find Mode in Binary Search Tree
