@@ -9,7 +9,49 @@ Given an integer array nums, find the sum of the elements between indices i and 
 The update(i, val) function modifies nums by updating the element at index i to val.
 */
 
-class NumArray {
+// BIT version
+class NumArray_BIT {
+    vector<int> bit{0};
+    vector<int> ori{0};
+
+    int sumFromBegin(int i) {
+        int res = 0;
+        while (i > 0) {
+            res += bit[i];
+            i -= i & -i;
+        }
+        return res;
+    }
+
+public:
+    NumArray(vector<int>& nums) {
+        bit.insert(bit.end(), nums.begin(), nums.end());
+        ori.insert(ori.end(), nums.begin(), nums.end());
+        int n = bit.size();
+        for (int i = 1; i < n; i++) {
+            auto parent = i + (i & -i);
+            if (parent < n)
+                bit[parent] += bit[i];
+        }
+    }
+
+    void update(int i, int val) {
+        i++;
+        int diff = val - ori[i];
+        ori[i] = val;
+        while (i < bit.size()) {
+            bit[i] = bit[i] + diff;
+            i += i & -i;
+        }
+    }
+
+    int sumRange(int i, int j) {
+        return sumFromBegin(j + 1) - sumFromBegin(i);
+    }
+};
+
+// Segment tree version
+class NumArray_ST {
     struct Node {
         int start;
         int end;
@@ -69,7 +111,7 @@ public:
 
 int main(void) {
     vector<int> nums{ 1, 3, 5 };
-    NumArray obj(nums);
+    NumArray_BIT obj(nums);
     obj.update(1, 2);
     cout << obj.sumRange(1, 2) << endl;
 }
