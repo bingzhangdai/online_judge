@@ -148,25 +148,25 @@
 * [ ] 465 Optimal Account Balancing
 * [ ] 469 Convex Polygon
 * [ ] 471 Encode String with Shortest Length
-* [ ] 474 Ones and Zeroes 38
-* [ ] 475 Heaters
-* [ ] 480 Sliding Window Median
-* [ ] 481 Magical String
-* [ ] 482 License Key Formatting
-* [ ] 483 Smallest Good Base
+* [x] 474 Ones and Zeroes 38
+* [x] 475 Heaters
+* [x] 480 Sliding Window Median
+* [x] 481 Magical String
+* [x] 482 License Key Formatting
+* [x] 483 Smallest Good Base
 * [ ] 484 Find Permutation
-* [ ] 485 Max Consecutive Ones
-* [ ] 486 Predict the Winner
+* [x] 485 Max Consecutive Ones
+* [x] 486 Predict the Winner
 * [ ] 487 Max Consecutive Ones II
 * [ ] 490 The Maze
 * [ ] 493 Reverse Pairs
-* [ ] 494 Target Sum
-* [ ] 498 Diagonal Traverse
+* [x] 494 Target Sum
+* [x] 498 Diagonal Traverse
 * [x] 501 Find Mode in Binary Search Tree
-* [ ] 503 Next Greater Element II
+* [x] 503 Next Greater Element II
 * [ ] 505 The Maze II
 * [x] 506 Relative Ranks
-* [ ] 514 Freedom Trail
+* [x] 514 Freedom Trail
 * [x] 520 Detect Capital
 * [x] 521 Longest Uncommon Subsequence I
 * [x] 522 Longest Uncommon Subsequence II
