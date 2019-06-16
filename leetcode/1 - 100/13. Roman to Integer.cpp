@@ -29,17 +29,12 @@ class Solution {
 public:
     int romanToInt(string s) {
         int res = 0;
-        for (int i = 0; i < s.length();) {
-            if (i + 1 < s.length()) {
-                auto next = subtract_roman_char_.find(s[i + 1]);
-                if (next != subtract_roman_char_.end() && next->second == s[i]) {
-                    res += roman_char_to_int_[s[i + 1]] - roman_char_to_int_[s[i]];
-                    i += 2;
-                    continue;
-                }
-            }
+        for (int i = s.length(); i >= 0; i--) {
             res += roman_char_to_int_[s[i]];
-            i++;
+            if (i - 1 >= 0 && subtract_roman_char_[s[i]] == s[i - 1]) {
+                res -= roman_char_to_int_[s[i - 1]];
+                i--;
+            }
         }
         return res;
     }

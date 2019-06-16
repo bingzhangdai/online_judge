@@ -31,17 +31,13 @@ public:
     string intToRoman(int num) {
         string res = "";
         for (char roman : roman_chars) {
-            auto subtract_char = subtract_roman_char_.find(roman);
-            auto subtract_num = subtract_char != subtract_roman_char_.end() ? roman_char_to_int_[subtract_char->second] : 0;
             auto roman_num = roman_char_to_int_[roman];
-            while (num / roman_num) {
-                res += roman;
-                num -= roman_num;
-            }
-            if ((num + subtract_num) / roman_num) {
-                res = res + subtract_char->second + roman;
-                num -= (roman_num - subtract_num);
-            }
+            auto subtract_num = subtract_roman_char_.find(roman) != subtract_roman_char_.end() ?
+                                roman_char_to_int_[subtract_roman_char_[roman]] : 0;
+            while (num / roman_num)
+                res += roman, num -= roman_num;
+            if (num / (roman_num - subtract_num))
+                res = res + subtract_roman_char_[roman] + roman, num -= roman_num - subtract_num;
         }
         return res;
     }

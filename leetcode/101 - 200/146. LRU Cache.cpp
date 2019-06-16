@@ -83,6 +83,101 @@ public:
     }
 };
 
+class LRUCache_2 {
+    template <class TKey, class TVal>
+    class linkedlist_map {
+        struct Node {
+            TKey key;
+            TVal val;
+            bool valid = true;
+            Node* next = nullptr;
+            Node* prev = nullptr;
+            Node(TKey key, TVal val) : key(key), val(val) {}
+        };
+
+        unordered_map<TKey, Node *> hash_map;
+        Node *head = nullptr, *tail = nullptr;
+    public:
+        int size = 0;
+
+        TVal operator[](const TKey& key) {
+            auto pos = hash_map.find(key);
+            if (pos != hash_map.end())
+                return pos->second->valid ? pos->second->val : TVal();
+            return TVal();
+        }
+
+        bool find(TKey key) {
+            auto pos = hash_map.find(key);
+            return pos != hash_map.end() ? pos->second->valid : false;
+        }
+
+        void remove(TKey key) {
+            auto node = hash_map[key];
+            if (node->prev)
+                node->prev->next = node->next;
+            else
+                head = node->next;
+            if (node->next)
+                node->next->prev = node->prev;
+            else
+                tail = node->prev;
+            node->valid = false;
+            size--;
+        }
+
+        void set(const TKey& key, const TVal& val) {
+            Node* node;
+            auto pos = hash_map.find(key);
+            if (pos != hash_map.end()) {
+                node = pos->second;
+                if (node->valid)
+                    remove(node->key);
+                node->val = val, node->valid = true, node->prev = node->next = nullptr;
+            }
+            else
+                node = hash_map[key] = new Node(key, val);
+            if (!head)
+                head = tail = node;
+            else
+                node->next = head, head->prev = node, head = node;
+            size++;
+        }
+
+        // remove the last key
+        void pop() {
+            if (tail)
+                remove(tail->key);
+        }
+
+        ~linkedlist_map() {
+            for_each(hash_map.begin(), hash_map.end(), [](pair<TKey, Node *> node_pair) {
+                delete node_pair.second;
+            });
+        }
+    };
+
+    int capacity;
+    linkedlist_map<int, int> list_map;
+public:
+    LRUCache(int capacity) : capacity(capacity) {}
+
+    int get(int key) {
+        if (list_map.find(key)) {
+            auto val = list_map[key];
+            list_map.set(key, val);
+            return val;
+        }
+        return -1;
+    }
+
+    void put(int key, int value) {
+        list_map.set(key, value);
+        if (list_map.size > capacity)
+            list_map.pop();
+    }
+};
+
 int main(void) {
     auto lru = LRUCache(2);
     lru.set(2, 2);
