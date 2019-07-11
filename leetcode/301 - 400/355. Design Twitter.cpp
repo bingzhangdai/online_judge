@@ -2,7 +2,7 @@
 #include <vector>
 #include <tuple>
 #include <dequeue>
-#include <priority_queue>
+#include <queue>
 #include <unordered_set>
 #include <unordered_map>
 

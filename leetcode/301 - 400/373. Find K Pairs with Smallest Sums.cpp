@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <priority_queue>
+#include <queue>
 #include <tuple>
 using namespace std;
 

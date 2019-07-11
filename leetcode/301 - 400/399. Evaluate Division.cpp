@@ -24,29 +24,27 @@ class Solution {
         return false;
     }
 public:
-    vector<double> calcEquation(vector<pair<string, string>> equations, vector<double>& values, vector<pair<string, string>> queries) {
+    vector<double> calcEquation(vector<vector<string>>& equations, vector<double>& values, vector<vector<string>>& queries) {
         for (int i = 0; i < equations.size(); i++) {
             const auto& e = equations[i];
             auto v = values[i];
-            hash_map[e.first].emplace_back(e.second, v);
-            hash_map[e.second].emplace_back(e.first, 1.0 / v);
-            visited[e.first] = false;
-            visited[e.second] = false;
+            hash_map[e[0]].emplace_back(e[1], v);
+            hash_map[e[1]].emplace_back(e[0], 1.0 / v);
+            visited[e[0]] = false;
+            visited[e[1]] = false;
         }
 
         vector<double> result;
         double res;
         for (const auto& query : queries) {
-            if (hash_map.find(query.first) == hash_map.end() || hash_map.find(query.second) == hash_map.end()) {
+            if (!hash_map.count(query[0]) || !hash_map.count(query[1])) {
                 result.push_back(-1);
                 continue;
             }
-            visited[query.first] = true;
-            if (dfs(res, 1, query.first, query.second))
+            if (dfs(res, 1, query[0], query[1]))
                 result.push_back(res);
             else
                 result.push_back(-1);
-            visited[query.first] = false;
         }
         return result;
     }

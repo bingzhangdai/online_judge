@@ -1,6 +1,6 @@
 #include <iostream>
 #include <climits>
-#include <priority_queue>
+#include <queue>
 using namespace std;
 
 /*

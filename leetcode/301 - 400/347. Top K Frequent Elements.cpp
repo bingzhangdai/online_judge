@@ -1,6 +1,6 @@
 #include <iostream>
 #include <unordered_map>
-#include <priority_queue>
+#include <queue>
 using namespace std;
 
 class Solution {

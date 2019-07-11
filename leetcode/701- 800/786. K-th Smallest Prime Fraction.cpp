@@ -1,5 +1,5 @@
 #include <iostream>
-#include <priority_queue>
+#include <queue>
 #include <algorithm>
 #include <vector>
 #include <tuple>
