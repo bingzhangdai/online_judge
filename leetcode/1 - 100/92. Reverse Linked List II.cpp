@@ -9,9 +9,32 @@ struct ListNode {
     ListNode(int x) : val(x), next(NULL) {}
 };
 
+// Use ListNode ** to avoid to new ListNode;
 class Solution {
 public:
-    ListNode* reverseBetween(ListNode* head, int m, int n) {
+    ListNode *reverseBetween(ListNode *head, int m, int n) {
+        auto p_next = &head;
+        while ((--n, --m) && *p_next)
+            p_next = &(*p_next)->next;
+        ListNode *tail = *p_next, *prev = *p_next;
+        if (!prev)
+            return head;
+        auto curr = prev->next;
+        while (curr && n--) {
+            auto tmp = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = tmp;
+        }
+        *p_next = prev;
+        tail->next = curr;
+        return head;
+    }
+};
+
+class Solution_OLD {
+public:
+    ListNode *reverseBetween(ListNode *head, int m, int n) {
         ListNode *p1 = new ListNode(-1), *p2, *p3, *p4, *p5, *p6;
         p1->next = head;
         head = p1;
